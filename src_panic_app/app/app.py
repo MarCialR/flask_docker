@@ -1,42 +1,22 @@
-import os
+
 from flask import Flask
+from helpers.site import debug_info
+from flask.ext import restful
+from restfull.restful2 import resources
+from views import make_routes
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-
-from flask.ext import restful
 api = restful.Api(app)
 
-from restfull.restful2 import resources
 for res in resources:
     api.add_resource(res, res.url)
 
-debug = True
+#debug_info(app, api)
 
-if debug:
 
-    from pprint import pprint
-    print "\n\nAPI.resources"
-    print "==========="
-    pprint(api.resources)
 
-    print "\n\nAPI"
-    print "==="
-    pprint(api)
-
-    print "\n\nAPP"
-    print "==="
-
-    pprint(app)
-
-    app.api = api
-    print "\n\nAPP DICT"
-    print "========"
-    pprint(app.__dict__)
-
-from menu import menu
-from views import make_routes
 make_routes(app, resources)
 
 if __name__ == '__main__':

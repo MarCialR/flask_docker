@@ -5,7 +5,7 @@ sudo docker build -t marcialr/panic:3_pexpect .
 sudo docker build -t marcialr/panic:4_tornado .
 
 
-sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_docker/panic/src_panic_app:/root/panic_app/ marcialr/panic:3_pexpect /root/panic_app/start.sh
+sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:3_pexpect /root/panic_app/app/start.sh
 
 
 sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/repos/flask_docker/panic/src_panic_app:/root/panic_app/ marcialr/panic:3_pexpect /root/panic_app/start.sh

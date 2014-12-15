@@ -48,8 +48,10 @@ class TestTest(restful.Resource):
 
 class OK(restful.Resource):
     def get(self):
-
-        return {'result': 'OK'}
+        9/0
+        os.chdir('/root/panic_app/app/tests/test_appengine/apps/')
+        output = cmd_output_as_lines("nosetests")
+        return {'result': 'OK', 'info':output}
 
 
 class RunCommand(restful.Resource):

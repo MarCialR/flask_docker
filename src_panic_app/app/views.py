@@ -4,7 +4,7 @@ from helpers.site import get_static, STATIC_DIR
 
 from menu import menu, get_menu_text_by_url
 from jinja2 import TemplateNotFound
-from test_helpers import get_tests_for_page
+from helpers.tests import get_tests_for_page
 
 def make_routes(app, resources):
 

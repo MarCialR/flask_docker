@@ -12,3 +12,23 @@ def get_static(filename):
         return open(src).read()
     except IOError as exc:
         return str(exc)
+
+def debug_info(app, api):
+    from pprint import pprint
+    print "\n\nAPI.resources"
+    print "==========="
+    pprint(api.resources)
+
+    print "\n\nAPI"
+    print "==="
+    pprint(api)
+
+    print "\n\nAPP"
+    print "==="
+
+    pprint(app)
+
+    app.api = api
+    print "\n\nAPP DICT"
+    print "========"
+    pprint(app.__dict__)	
