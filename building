@@ -1,0 +1,19 @@
+debian 7.7
+
+apt-get update
+apt-get upgrade -y
+apt-get install -y tar git curl nano wget dialog net-tools build-essential
+
+# Install basic applications
+apt-get install -y tar git curl nano wget dialog net-tools build-essential
+
+# Install Python and Basic Python Tools
+apt-get install python-pip -y
+
+
+TXON
+
+debian 7.7
+
+# Install basic applications
+apt-get update && apt-get install -y python-pip git curl

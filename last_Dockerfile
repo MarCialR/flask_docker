@@ -1,0 +1,48 @@
+############################################################
+# Dockerfile to build Python WSGI Application Containers
+# Based on Ubuntu
+# Hints at:
+#	https://www.digitalocean.com/community/tutorials/docker-explained-how-to-containerize-python-web-applications
+#	https://github.com/MarCialR/flask_docker/blob/master/Dockerfile
+############################################################
+
+# Set the base image to Ubuntu
+FROM marcialr/panic:2_gcloud_sdk
+
+# File Author / Maintainer
+MAINTAINER MarCialR <marcialemilio@gmail.com>
+
+# create user
+RUN groupadd web
+RUN useradd -d /home/panic_app -m panic_app
+
+
+# Add the application resources URL
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) main universe" >> /etc/apt/sources.list
+#RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+
+# Update the sources list
+RUN apt-get update
+RUN apt-get upgrade -y
+
+# Install basic applications
+RUN apt-get install -y tar git curl nano wget dialog net-tools build-essential
+
+# Install Python and Basic Python Tools
+RUN apt-get install python-pip -y
+
+# Copy the application folder inside the container
+ADD /src_panic_app /home/panic_app
+
+# Get pip to download and install requirements:
+RUN pip install -r /home/panic_app/requirements.txt
+
+#WORKDIR /home/panic_app/static
+#RUN git clone https://github.com/IronSummitMedia/startbootstrap-sb-admin.git startbootstrap-sb-admin
+
+# Expose ports
+EXPOSE 8080
+
+# in case you'd prefer to use links, expose the port
+ENTRYPOINT ["/usr/bin/python", "/home/panic_app/app.py"]
+USER panic_app

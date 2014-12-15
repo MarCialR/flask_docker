@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Tests</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+ <form role="form" id="runcommand_form" action="/runcommand">
+                                        <div class="form-group">
+                                            <label>Run free command</label>
+                                            <input class="form-control" placeholder="enter command here" id="lele" name="lele">
+                                            <input class="form-control" placeholder="a ver que llega" id="result" name="result">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-default" id="runcommand_btn">Submit Button</button>
+
+                                    </form>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Appengine Testss
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                        
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th></th>
+                                            <th>Info</th>
+                                            <th>Response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+{% for test in tests %}
+
+                                        <tr>
+                                            <td>{{ test.id }}</td>
+                                            <td><button type="button" class="btn btn-primary" data="{{ test.url }}">{{ test.name }}</button></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+{% endfor %}                                        
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    
+
+                </div>
+                <!-- /.col-lg-6 -->
+
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">                
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Compute Engine Tests
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                        
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th></th>
+                                            <th>Result</th>
+                                            <th>Response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><button type="button" class="btn btn-primary" data="all">all</button></td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><button type="button" class="btn btn-primary" data="true">true</button></td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><button type="button" class="btn btn-primary" data="false">false</button></td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><button type="button" class="btn btn-primary" data="info">info</button></td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    
+
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+{% endblock %}
