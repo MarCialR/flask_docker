@@ -40,7 +40,7 @@ class OK(Resource):
     def get(self):
         os.chdir('/root/panic_app/app/tests/python/nosetests/test_appengine/')
         output = cmd_output_as_lines("nosetests")
-        return {'result': 'OK', 'info':output}        
+        return {'result': 'OK', 'info':"</br>".join(output)}        
 
 
 resources.append(OK)

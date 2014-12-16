@@ -31,13 +31,13 @@ class OK(Resource):
     menu = 'appengine'
     def get(self):
         os.chdir('/root/panic_app/app/tests/test_appengine/apps/')
-        output = cmd_output_as_lines("nosetests")
-        return {'result': 'OK', 'info':output}        
+        output = cmd_output_as_lines("nosetests - ")
+        return {'ole':'si', 'result': 'OK', 'info':output.replace('\n','<br')}        
 
 
 resources.append(OK)
 
-
+#Noooooooooooooooooooooooooooooooooooo
 class RunCommand(Resource):
     url = '/runcommand'
     tipe = 'free'

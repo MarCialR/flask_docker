@@ -7,10 +7,12 @@
 ############################################################
 
 
-FROM marcialr/panic:4_uwsgi
+FROM marcialr/panic:3_sdk
+
+RUN apt-get install -y python-dev
 
 # Copy the application folder inside the container
-ADD /src_panic_app /root/panic_app
+ADD /src_panic_app/requirements.txt /root/panic_app/requirements.txt
 
 # Get pip to download and install requirements:
 RUN pip install -r /root/panic_app/requirements.txt
