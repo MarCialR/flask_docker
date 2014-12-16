@@ -22,10 +22,21 @@ def make_routes(app, resources):
                            tests = get_tests_for_page(resources, page),
                            menu = menu)
 
+
+    @app.route('/debug', methods=['GET'])
+    def debug():
+        return render_template( 'debug.html',
+                                title = 'Debugging tools',
+                                menu = menu)
+
     @app.route('/<page>.html', methods=['GET'])
     def old_html(page='index'):
-        content = get_static(page+'.html')
-        return Response(content, mimetype="text/html")
+        return render_template( 'sbtadmin/'+page+'.html',
+                           title = get_menu_text_by_url('tests/' + page),
+                           tests = get_tests_for_page(resources, page),
+                           menu = menu)        
+        """content = get_static(page+'.html')
+        return Response(content, mimetype="text/html")"""
 
     #@app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
