@@ -10,12 +10,12 @@ class Walker(object):
 		info += "---------------\n"
 		from os.path import join, getsize
 		for root, dirs, files in os.walk(TESTS_DIR):
-		    info += root + " consumes "
-		    info += str(sum([getsize(join(root, name)) for name in files]))
+		    info += "\n" + root 
+		    info += " consumes " + str(sum([getsize(join(root, name)) for name in files]))
 		    info += " bytes in " + str(len(files)) +  " non-directory files"
 
 		for root, dirs, files in os.walk(TESTS_DIR):
-		    info += root + " consumes "
+		    info += "\n" + root + " consumes "
 		    info += str(sum([getsize(join(root, name)) for name in files]))
 		    info += " bytes in " + str(len(files)) +  " non-directory files"
 
@@ -30,7 +30,6 @@ class MenuItem(object):
 		""" does the sanity checks"""
 		assert self.__dict__.has_key('text')
 		assert self.__dict__.has_key('url')
-
 
 
 class Menu(object):

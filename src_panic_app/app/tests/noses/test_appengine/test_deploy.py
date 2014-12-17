@@ -36,9 +36,10 @@ class TC(unittest.TestCase):
 def write_to_logg(que):
     print que
 
-apps_path = "/root/panic_app/app/tests/python/nosetests/test_appengine/apps/"
+apps_path = "/root/panic_app/app/tests/noses/test_appengine/apps/"
 appcfg_py = "appcfg.py "
 
+# TODO icomrporar el path apropiado a nose tests
 
 #@unittest.skip("OK")
 class GoAppTestCase(TC):

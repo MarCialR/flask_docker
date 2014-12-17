@@ -51,3 +51,7 @@ imagen => https://registry.hub.docker.com/_/postgres/
 investigar
 ==========
 http://haifux.org/lectures/294/modern-web-applications.pdf
+
+to think
+======== 
+http://code.activestate.com/recipes/159571-importing-any-file-without-modifying-syspath/

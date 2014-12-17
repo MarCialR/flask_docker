@@ -1,8 +1,9 @@
 
 from flask import Flask
-from helpers.site import debug_info
+from helpers.site import app_info
 from flask.ext import restful
-from restfull.restful2 import resources
+from x_restful__MOVE_ME import resources
+from tests.jsons.walker import resources as resources2
 from views import make_routes
 
 app = Flask(__name__)
@@ -12,10 +13,9 @@ api = restful.Api(app)
 
 for res in resources:
     api.add_resource(res, res.url)
-
-#debug_info(app, api)
-
-
+for res in resources2:
+    api.add_resource(res, res.url)
+app_info(app, api)
 
 make_routes(app, resources)
 

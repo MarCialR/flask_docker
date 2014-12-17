@@ -1,10 +1,17 @@
 import os
 
-def get_dir(_dir):  # pragma: no cover
-    return os.path.join(os.path.join(os.path.abspath(os.path.dirname(__file__)), '..' ), _dir)
+_thisfiledir = os.path.abspath(os.path.dirname(__file__))
 
-STATIC_DIR = get_dir("static")
-TESTS_DIR = get_dir("tests")
+def get_dir_in_app(_dir):  # pragma: no cover
+    """returns the absolute path of the main app folders"""
+    return os.path.normpath(os.path.join(os.path.join(_thisfiledir, '..' ), _dir))
+
+
+STATIC_DIR = get_dir_in_app("static")
+TEMPLATES_DIR = get_dir_in_app("templates")
+TESTS_DIR = get_dir_in_app("tests")
+
+del _thisfiledir
 
 def get_static(filename):
     """taken from stackoverflow"""
@@ -14,7 +21,7 @@ def get_static(filename):
     except IOError as exc:
         return str(exc)
 
-def debug_info(app, api):
+def app_info(app, api):
     from pprint import pprint
     print "\n\nAPI.resources"
     print "==========="
