@@ -1,0 +1,13 @@
+#!/bin/sh
+
+init () {
+	: dummy test setup
+}
+
+
+cleanup () {
+	: dummy test cleanup
+}
+
+true
+

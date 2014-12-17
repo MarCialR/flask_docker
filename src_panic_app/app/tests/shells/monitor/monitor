@@ -1,0 +1,30 @@
+#!/bin/sh 
+
+case $# in
+(0) BATTERIES=$(ls -d b*_* | sort);;
+(*) BATTERIES=$(echo $* | sort);;
+esac
+
+for BATTERY in $BATTERIES; do
+	[ -d $BATTERY ] || {
+		echo $BATTERY does not exists
+		continue
+	}
+
+	echo BEGIN $BATTERY
+	[ -x $BATTERY/setup ] && $BATTERY/setup
+	TESTS=$(ls -d $BATTERY/t*_* | sort)
+	for TEST in $TESTS; do
+		echo BEGIN $TEST
+		if $TEST/check; then
+			STATUS=ok
+		else
+			STATUS=KO
+		fi
+		echo END $TEST
+		echo $STATUS: $TEST
+	done
+	[ -x $BATTERY/cleanup ] && $BATTERY/cleanup
+	echo END $BATTERY
+done
+

@@ -1,0 +1,38 @@
+#!/bin/sh -x
+
+PROJECT=agc-cloud
+MACHINE_TYPE=f1-micro
+
+alias gc="gcloud compute --project $PROJECT"
+
+zones_list () {
+	gc zones list | awk '$3=="UP" { print $1 }'
+}
+
+instance_create () {
+	gc instances create $INSTANCE --zone $ZONE --machine-type $MACHINE_TYPE 1>/dev/null 2>/dev/null
+}
+
+instance_delete () {
+	gc instances delete $INSTANCE --zone $ZONE --quiet 1>/dev/null 2>/dev/null
+}
+
+FAIL=false
+zones_list |
+while read ZONE; do
+	INSTANCE=instance-$(date +%s)
+	if instance_create; then
+		echo ok: $ZONE instance $INSTANCE properly created
+		if instance_delete; then
+			echo ok: $ZONE instance $INSTANCE properly destroyed
+		else
+			echo KO: $ZONE instance $INSTANCE was not properly destroyed
+		fi
+	else
+		echo ok: $ZONE instance $INSTANCE properly created
+		exit 1
+	fi
+done
+
+exit 0
+

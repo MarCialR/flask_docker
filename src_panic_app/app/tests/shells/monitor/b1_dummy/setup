@@ -1,0 +1,6 @@
+#!/bin/sh
+
+: Starting  Dummy test setup process
+: Stoppping Dummy test setup process
+exit 0
+
