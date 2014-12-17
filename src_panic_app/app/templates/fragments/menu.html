@@ -14,11 +14,7 @@
                         </li>
 
 
-                        {% for item in menu %}
-                        <li>
-                            <a href="/{{item.url}}"><i class="fa fa-table fa-fw"></i> {{item.text}}</a>
-                        </li>
-                        {% endfor %}        
+                        {{ menu.populate()|safe }}
 
                         {% include 'fragments/demo_menu.html' %}
 

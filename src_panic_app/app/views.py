@@ -2,7 +2,7 @@ import os
 from flask import Flask, Response, render_template
 from helpers.site import get_static, STATIC_DIR
 
-from menu import menu, get_menu_text_by_url
+from menu import menu
 from jinja2 import TemplateNotFound
 from helpers.tests import get_tests_for_page
 
@@ -18,7 +18,7 @@ def make_routes(app, resources):
     @app.route('/tests/<page>', methods=['GET'])
     def tests(page='appengine'):
         return render_template( 'tests.html',
-                           title = get_menu_text_by_url('tests/' + page),
+                           title = menu.get_text_by_url('tests/' + page),
                            tests = get_tests_for_page(resources, page),
                            menu = menu)
 
@@ -32,7 +32,7 @@ def make_routes(app, resources):
     @app.route('/<page>.html', methods=['GET'])
     def old_html(page='index'):
         return render_template( 'sbtadmin/'+page+'.html',
-                           title = get_menu_text_by_url('tests/' + page),
+                           title = menu.get_text_by_url('tests/' + page),
                            tests = get_tests_for_page(resources, page),
                            menu = menu)        
         """content = get_static(page+'.html')
