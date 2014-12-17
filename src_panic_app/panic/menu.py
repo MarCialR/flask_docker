@@ -94,7 +94,7 @@ class Menu2(Menu):
 		
 
 
-menu = Menu2([ MenuItem({'text':'App Engine',
+menu = Menu([ MenuItem({'text':'App Engine',
 			'url':'tests/appengine'}),
 		MenuItem({'text':'Compute Engine',
 			'url':'tests/computeengine'}),

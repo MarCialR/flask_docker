@@ -1,6 +1,7 @@
-from helpers.tests import stdout_stderr  # REMOVE THIS IMPORT
+from panic.helpers.tests import stdout_stderr  # REMOVE THIS IMPORT
 from flask.ext.restful import Resource
 from tests import json_tests
+from pprint import pprint
 
 resources = []
 
@@ -19,4 +20,5 @@ def build_testclass(test_dict):
     return type(str(test_dict['name']), (Resource,), test_dict)
 
 for test in json_tests:
+    print "*"*10, "\n", pprint(test)
     resources.append(build_testclass(test))

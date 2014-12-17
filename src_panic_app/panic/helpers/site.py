@@ -21,22 +21,16 @@ def get_static(filename):
     except IOError as exc:
         return str(exc)
 
-def app_info(app, api):
+def app_info(app):
     from pprint import pprint
+    print "\n\nAPP DICT"
+    print "========"
+    pprint(app.__dict__)    
     print "\n\nAPI.resources"
     print "==========="
-    pprint(api.resources)
+    pprint(app.api.resources)
 
     print "\n\nAPI"
     print "==="
-    pprint(api)
+    pprint(app.api.__dict__)
 
-    print "\n\nAPP"
-    print "==="
-
-    pprint(app)
-
-    app.api = api
-    print "\n\nAPP DICT"
-    print "========"
-    pprint(app.__dict__)	
