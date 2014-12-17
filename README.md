@@ -3,18 +3,15 @@ panic
 
 sudo docker build -t marcialr/panic:4_panic .
 
+sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:panic:4_panic /root/panic_app/start.sh
 
-sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:3_pexpect /root/panic_app/start.sh
+sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
 
-
-sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/repos/flask_docker/panic/src_panic_app:/root/panic_app/ marcialr/panic:3_pexpect /root/panic_app/start.sh
-
-sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/repos/flask_docker/panic/src_panic_app:/root/panic_app/ marcialr/panic:4_uwsgi /root/panic_app/start.sh
 
 
 Inspect container
 -----------------
-sudo docker inspect panic_containery
+sudo docker inspect panic
 
 
 dependencies
@@ -22,6 +19,9 @@ dependencies
 flask
 flask-restful
 pexpect
+uwsgi
+nose
+
 
 add cloud sdk
 https://cloud.google.com/sdk/https://www.youtube.com/watch?v=Rs38x-13l9s

@@ -4,6 +4,7 @@ def get_dir(_dir):  # pragma: no cover
     return os.path.join(os.path.join(os.path.abspath(os.path.dirname(__file__)), '..' ), _dir)
 
 STATIC_DIR = get_dir("static")
+TESTS_DIR = get_dir("tests")
 
 def get_static(filename):
     """taken from stackoverflow"""
