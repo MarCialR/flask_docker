@@ -11,3 +11,12 @@ ALL_RESOURCES.extend(resources_JSON)
 
 
 import views
+
+
+from blueprint_contents import contents
+app.register_blueprint(contents, url_prefix='/contents')
+
+from pprint import pprint
+print "\n\n1111111"
+print "========"
+pprint(app.__dict__)

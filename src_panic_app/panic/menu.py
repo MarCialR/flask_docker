@@ -42,12 +42,14 @@ class Menu(object):
 		html = ""
 		if not items:
 			items = self.items
+
 		for item in items:
 			html += """
                         <li>
-                            <a href="/%s"><i class="fa fa-table fa-fw"></i> %s</a>
+                            <a href="javascript:load_contents('%s')"><i class="fa fa-cloud fa-fw"></i> %s</a>
                         </li>
 """ % (item.url, item.text)
+
 		return html
 
 	def get_text_by_url(self, url):

@@ -1,12 +1,4 @@
-$(function(){
-	$(".btn-primary").click(function(){
-		launch_ajax($(this));	
-	});
-	$("#launch_all").click(function(){
-		$(this).addClass( "disabled" );
-		$(".btn-primary").click();
-	})	
-})
+
 
 
 
@@ -39,26 +31,64 @@ function launch_ajax(btn){
 	});
 }
 
-
-// Attach a submit handler to the form
-$( "#runcommand_form" ).submit(function( event ) {
- 
-	// Stop form from submitting normally
-	event.preventDefault();
-	// Get some values from elements on the page:
-	var $form = $( this ),
-	url = $form.attr( "action" );
-	// Send the data using post
-	var posting = $.post( url, $form.serialize() );
-	// Put the results in a div
-	posting.done(function( data ) {
-		//var content = $( data ).find( "#content" );
-		$( "#result" ).html( data.info.replace('\r\n', '<br/>') );
+function attach_test_launch_handler(){
+	$(".btn-primary").click(function(){
+		launch_ajax($(this));	
 	});
-});
+	$("#launch_all").click(function(){
+		$(this).addClass( "disabled" );
+		$(".btn-primary").click();
+	})	
+}
+
+function attach_submit_handler(){
+	// Attach a submit handler to the form
+	$( "#runcommand_form" ).submit(function( event ) {
+	 
+		// Stop form from submitting normally
+		event.preventDefault();
+		// Get some values from elements on the page:
+		var $form = $( this ),
+		url = $form.attr( "action" );
+		// Send the data using post
+		var posting = $.post( url, $form.serialize() );
+		// Put the results in a div
+		posting.done(function( data ) {
+			//var content = $( data ).find( "#content" );
+			$( "#result" ).html( data.info.replace('\r\n', '<br/>') );
+		});
+	});
+}
+
+$(function(){
+	attach_submit_handler();
+	attach_test_launch_handler();
+})
+
 
 
 
 /*$("#runcommand_btn").click(function(){
 	alert('yeah');//$.post( "/runcommand", $( "#runcommand_form" ).serialize() );	
 })*/
+
+var borrar;
+
+function load_contents(url){
+	//alert('will call '+ '/contents/'+url);
+	$.ajax({
+	  url: '/contents/'+url
+	}).done(function(data) {
+		console.log(data);
+		borrar = data;
+		if (data.result == 'OK'){
+			$("#page-wrapper").html(data.contents);
+			attach_submit_handler();
+			attach_test_launch_handler();
+		} else {
+			alert('Error loading contents');
+		}
+
+
+	});
+}

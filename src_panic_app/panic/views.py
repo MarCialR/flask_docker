@@ -6,31 +6,13 @@ from menu import menu
 from jinja2 import TemplateNotFound
 from helpers.tests import get_tests_for_page
 from panic import app
-from pprint import pprint
-print "\n\n1111111"
-print "========"
-pprint(app.__dict__)
+
 
 from panic import ALL_RESOURCES as resources
 @app.route('/index.html', methods=['GET'])
 def index():
     return render_template( 'index.html',
                        menu = menu)
-                       
-@app.route('/', methods=['GET'])
-@app.route('/tests/<page>', methods=['GET'])
-def tests(page='appengine'):
-    return render_template( 'tests.html',
-                       title = menu.get_text_by_url('tests/' + page),
-                       tests = get_tests_for_page(resources, page),
-                       menu = menu)
-
-
-@app.route('/debug', methods=['GET'])
-def debug():
-    return render_template( 'debug.html',
-                            title = 'Debugging tools',
-                            menu = menu)
 
 @app.route('/<page>.html', methods=['GET'])
 def old_html(page='index'):
