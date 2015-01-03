@@ -60,10 +60,3 @@ def _unidiff_output(expected, actual):
 """
 
 
-def get_tests_for_page(resources, page):
-    tests = []
-    for res in resources:
-        if res.menu == page or page=='tests':
-            tests.append({'id': res.name, 'url': res.url, 'name': res.name})    
-    return tests
-

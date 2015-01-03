@@ -1,29 +1,19 @@
 import os
-from flask import Flask, Response, render_template
+from flask import Response, render_template
+
+from panic import app
+from menu import menu
 from helpers.site import get_static, STATIC_DIR
 
-from menu import menu
-from jinja2 import TemplateNotFound
-from helpers.tests import get_tests_for_page
-from panic import app
 
-
-from panic import ALL_RESOURCES as resources
-@app.route('/index.html', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
-    return render_template( 'index.html',
-                       menu = menu)
+    return render_template( 'index.html', menu = menu)
 
 @app.route('/<page>.html', methods=['GET'])
 def old_html(page='index'):
-    return render_template( 'sbtadmin/'+page+'.html',
-                       title = menu.get_text_by_url('tests/' + page),
-                       tests = get_tests_for_page(resources, page),
-                       menu = menu)        
-    """content = get_static(page+'.html')
-    return Response(content, mimetype="text/html")"""
+    return render_template( 'sbtadmin/'+page+'.html', menu = menu)    
 
-#@app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def get_resource(path):
     mimetypes = {

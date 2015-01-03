@@ -21,13 +21,13 @@
            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-info">
-                        <div class="panel-heading">
+                        <div class="panel-heading" id="walker-toggler">
                             menu Walker
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body walker-toggle-me">
                             <p>{{menu.walker.walk()|safe}}</p>
                         </div>
-                        <div class="panel-footer">
+                        <div class="panel-footer walker-toggle-me">
                             Panel Footer
                         </div>
                     </div>
@@ -35,3 +35,8 @@
                 <!-- /.col-lg-12 -->
             </div>            
             <!-- /.row -->
+            <script type="text/javascript">
+                $("#walker-toggler").click(function(){
+                    $(".walker-toggle-me").toggle();   
+                });
+            </script>
