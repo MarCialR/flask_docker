@@ -101,6 +101,14 @@ class Collection(object):
 	    
 	    return tests
 
+	def get_all_tests(self):
+	    tests = []
+	    for res in resources:
+	        tests.append({'id': res.name, 'url': res.url, 'name': res.name})
+	    tests.extend(self.noses.get_jsons())
+	    
+	    return tests		
+
 	def get_nose_test(self, name):
 		return self.noses._get_test(name)
 

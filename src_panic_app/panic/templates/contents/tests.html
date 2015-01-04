@@ -16,30 +16,9 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         <button class="btn btn-default" id="launch_all">All</button>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Test Name</th>
-                                            <th>Info</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-{% for test in tests %}
+                        <button class="btn btn-default" id="toggle_info">Info</button>
 
-                                        <tr>
-                                            <td class="col-md-1"><button type="button" class="btn btn-primary" data="{{ test.url }}">Run</button></td>
-                                            <td class="col-md-3">{{ test.id }}</td>
-                                            <td></td>
-                                        </tr>
-{% endfor %}                                        
-   
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
+{% include 'fragments/table_tests.html' %}
                         
                         </div>
                         <!-- /.panel-body -->

@@ -25,7 +25,9 @@
                             menu Walker
                         </div>
                         <div class="panel-body walker-toggle-me">
+                        <button class="btn btn-default" id="toggle_info">Info</button>
                             <p>{{collection.html_info()|safe}}</p>
+                            {% include 'fragments/table_tests.html' %}
                         </div>
                         <div class="panel-footer walker-toggle-me">
                             Panel Footer
@@ -37,6 +39,7 @@
             <!-- /.row -->
             <script type="text/javascript">
                 $("#walker-toggler").click(function(){
-                    $(".walker-toggle-me").toggle();   
+                    $(".walker-toggle-me").toggle();
+                    attach_toggle_info_handler();
                 });
             </script>

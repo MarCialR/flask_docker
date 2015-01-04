@@ -26,7 +26,8 @@ def debug():
         return jsonify(	result='OK',
         				contents=render_template('contents/debug.html',
                         title = menu.get_text_by_url('debug'),
-                        collection= collection)
+                        collection= collection,
+                        tests = collection.get_all_tests())
         			   )
     except TemplateNotFound:
         return jsonify(result='KO')	

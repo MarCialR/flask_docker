@@ -38,7 +38,13 @@ function attach_test_launch_handler(){
 	$("#launch_all").click(function(){
 		$(this).addClass( "disabled" );
 		$(".btn-primary").click();
-	})	
+	});
+}
+
+function attach_toggle_info_handler(){
+	$("#toggle_info").click(function(){
+		$(".toggle_info").toggle();
+	});
 }
 
 function attach_submit_handler(){
@@ -63,6 +69,7 @@ function attach_submit_handler(){
 $(function(){
 	attach_submit_handler();
 	attach_test_launch_handler();
+	attach_toggle_info_handler();
 })
 
 
