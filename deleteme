@@ -1,0 +1,43 @@
+from pprint import pprint
+APP_ENGINE_TESTS_DIR = "/home/marcial/repos/flask_docker/src_panic_app/panic/tests/noses/test_appengine"
+from nose.config import Config
+conf = Config()
+from nose.loader import TestLoader
+loader = TestLoader()
+from nose.plugins.collect import CollectOnly, TestSuiteFactory, TestSuite
+collect = CollectOnly()
+collect.conf = conf
+collect.prepareTestLoader(loader)
+tests = loader.loadTestsFromDir(APP_ENGINE_TESTS_DIR)
+suite = TestSuite()
+suite.addTests(tests)
+
+
+from pprint import pprint
+NOSETESTS_DIR = "/home/marcial/repos/flask_docker/src_panic_app/panic/tests/noses"
+from nose.config import Config
+conf = Config()
+from nose.loader import TestLoader
+loader = TestLoader()
+from nose.plugins.collect import CollectOnly, TestSuiteFactory, TestSuite
+collect = CollectOnly()
+collect.conf = conf
+collect.prepareTestLoader(loader)
+tests = loader.loadTestsFromDir(NOSETESTS_DIR)
+suite = TestSuite()
+suite.addTests(tests)
+
+
+from pprint import pprint
+NOSETESTS_DIR = "/home/marcial/repos/flask_docker/src_panic_app/panic/tests/noses"
+from nose.config import Config
+conf = Config()
+from nose.loader import TestLoader
+loader = TestLoader()
+from nose.plugins.collect import CollectOnly, TestSuiteFactory, TestSuite
+collect = CollectOnly()
+collect.conf = conf
+collect.prepareTestLoader(loader)
+tests = loader.loadTestsFromDir(NOSETESTS_DIR)
+suite = TestSuite()
+suite.addTests(tests)

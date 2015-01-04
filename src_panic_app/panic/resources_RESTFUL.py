@@ -25,6 +25,19 @@ class OK(Resource):
 
 resources.append(OK)
 
+class Trivial(Resource):
+    url = '/Trivial'
+    tipe = 'Trivial'
+    name = 'Trivial'
+    menu = 'appengine'
+    def get(self):
+        import os
+        os.chdir('/root/panic_app/panic/tests/noses/trivial_tests')
+        output = cmd_output_as_lines("nosetests")
+        return {'result': 'OK', 'info':"</br>".join(output)}        
+
+
+resources.append(Trivial)
 
 class RunCommand(Resource):
     url = '/runcommand'
@@ -37,5 +50,3 @@ class RunCommand(Resource):
         return {'result': 'OK', 'info': output}
 
 resources.append(RunCommand)
-
-

@@ -30,8 +30,7 @@ def cmd_output_as_lines(command):
 
 
 class TC(unittest.TestCase):
-    def shortDescription(self):
-        return self.__name__ + "|"
+    pass
 
 def write_to_logg(que):
     print que

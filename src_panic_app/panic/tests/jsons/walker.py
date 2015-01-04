@@ -1,4 +1,4 @@
-from panic.helpers.tests import stdout_stderr  # REMOVE THIS IMPORT
+from panic.helpers.tests import cmd_output_as_line, cmd_output_as_lines  # REMOVE THIS IMPORT
 from flask.ext.restful import Resource
 from tests import json_tests
 from pprint import pprint
@@ -6,13 +6,30 @@ from pprint import pprint
 resources = []
 
 def get(self):
-    from random import randint
-    from time import sleep
 
-    #sleep(randint(1,4))    
-    stdout, stderr = stdout_stderr(self.command)
-    return {'result': 'OK' if stdout == self.expected else 'KO',
+    """stdout, stderr = stdout_stderr(self.command)
+    print "stdout\n", stdout
+    print "stderr\n", stderr 
+    if stdout == self.expected:
+        return {'result': 'OK' ,
             'info': stdout.replace('\n','<br>')}
+    else:
+        return {'result': 'KO' ,
+            'info': stderr.replace('\n','<br>')}"""
+
+    """output = cmd_output_as_line(self.command)
+    if output == self.expected:
+        return {'result': 'OK' ,
+            'info': output.replace('\r\n','<br>').replace('\n','<br>')}
+    else:
+        return {'result': 'KO' ,
+            'info': output.replace('\r\n','<br>').replace('\n','<br>')}"""
+
+    output = [l.replace('\r\n','<br>').replace('\n','<br>') for l in cmd_output_as_lines(self.command)]
+    return {'result': 'OK' ,
+            'info': "".join(output)}
+
+
 
 def build_testclass(test_dict):
     test_dict.update({'get':get})

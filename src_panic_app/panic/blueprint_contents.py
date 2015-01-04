@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, abort, jsonify
 from jinja2 import TemplateNotFound
 from menu import menu
-
+from collection import collection
 
 
 contents = Blueprint('contents', __name__,
@@ -13,19 +13,20 @@ def test_suite(what):
         return jsonify(	result='OK',
         				contents=render_template('contents/tests.html',
         				title = menu.get_text_by_url('tests/' + what),
-                       	tests = menu.get_tests_for_page(what))
+                       	tests = collection.get_tests_for_page(what))
         			   )
     except TemplateNotFound:
         return jsonify(result='KO')
+
+
 
 @contents.route('/debug', methods=['GET'])
 def debug():
     try:
         return jsonify(	result='OK',
         				contents=render_template('contents/debug.html',
-                        title = 'Debugging tools',
-                        menu= menu)
+                        title = menu.get_text_by_url('debug'),
+                        collection= collection)
         			   )
     except TemplateNotFound:
         return jsonify(result='KO')	
-
