@@ -1,67 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">{{ title }}</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
+<h1>AAAAAAAAAAAAAAAAAAAAAAAAAAa</h1>
+    {% include 'fragments/content.html' %}
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Free Tests
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                        <button class="btn btn-default" id="launch_all">All</button>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Test Name</th>
-                                            <th>Info</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-{% for test in tests %}
-
-                                        <tr>
-                                            <td class="col-md-1"><button type="button" class="btn btn-primary" data="{{ test.url }}">Run</button></td>
-                                            <td class="col-md-3">{{ test.id }}</td>
-                                            <td></td>
-                                        </tr>
-{% endfor %}                                        
-   
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-
-                    <form role="form" id="runcommand_form" action="/runcommand">
-                        <div class="form-group">
-                            <label>Run free linux commmand</label>
-                            <input class="form-control" placeholder="enter command here" id="command" name="command">
-                            <pre id="result" name="result"/>
-                        </div>
-                        <button type="submit" class="btn btn-default" id="runcommand_btn">Submit Button</button>
-                    </form>
-
-
-                </div>
-                <!-- /.col-lg-6 -->
-
-            </div>
-            <!-- /.row -->
-        </div>
 {% endblock %}

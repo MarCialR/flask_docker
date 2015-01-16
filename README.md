@@ -7,7 +7,8 @@ sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_do
 
 sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
 
-
+from cloud9
+sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/cloud9/workspace1/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
 
 Inspect container
 -----------------
