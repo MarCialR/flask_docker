@@ -34,9 +34,14 @@ class TC(unittest.TestCase):
 
 def write_to_logg(que):
     print que
+apps_path = os.path.join(os.path.dirname(os.path.abspath(os.path.abspath('test_deploy.py'))),'test_appengine/apps')
 
-apps_path = "/root/panic_app/panic/tests/noses/test_appengine/apps/"
+#apps_path = os.path.join(os.path.dirname(os.path.abspath('test_deploy.py'),'../apps'))
+#"/root/panic_app/panic/tests/noses/test_appengine/apps/"
 appcfg_py = "appcfg.py "
+#print "MROU"
+#print os.path.realpath(os.path.curdir)
+#print os.path.realpath(__file__)
 
 # TODO icomrporar el path apropiado a nose tests
 
@@ -66,6 +71,8 @@ class GoAppTestCase(TC):
               ...
              '10:13 PM Checking if updated app version is serving.\r\n',
              '10:13 PM Completed update of app: panic-tests, version: go\r\n']"""
+
+
         os.chdir(apps_path)
         stdout = cmd_output_as_line(appcfg_py + "update go/")
         must_contain = "PM Completed update of app: panic-tests, version: go"

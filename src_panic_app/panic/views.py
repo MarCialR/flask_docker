@@ -63,7 +63,7 @@ def test_nose(what):
     
     print (what +"\n")* 5
 
-    os.chdir('/root/panic_app/panic/tests/noses')
+    os.chdir(app.config['TESTS_DIR']  + '/noses')
     output = cmd_output_as_lines("nosetests %s" % what)
     last_line = str(output[-1:]) # ['OK\r\n']
     result = 'OK' if (last_line[2:4] == 'OK') else 'KO'
