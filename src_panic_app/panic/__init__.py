@@ -4,12 +4,16 @@ app.config.from_object(__name__)
 
 
 
+
 import os
 # os.getenv is equivalent, and can also give a default value instead of `None`
 config_to_run = os.getenv('PANIC_MODE', 'Production')
 #app.config.from_envvar('CFGFILE')
 app.config.from_object('configmodule.'+config_to_run)
 
+
+from helpers.tests import global_checks
+global_checks()
 
 
 ALL_RESOURCES = []

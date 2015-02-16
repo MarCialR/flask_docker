@@ -13,7 +13,7 @@ REPLY="y"
 while [ "$REPLY" = "y" ]; do
 
 
-	read -p "prod or dev? (p/d) " REPLY2
+	read -p "prod(uwsgi) or dev(flask)? (p/d) " REPLY2
 	case "$REPLY2" in
 		("p"|"P") uwsgi /root/panic_app/uwsgi.ini;;
 		("d"|"D")    /usr/bin/python /root/panic_app/runapp.py;;

@@ -1,3 +1,4 @@
+import os
 import re
 import subprocess
 from pexpect import spawn, ExceptionPexpect
@@ -60,3 +61,6 @@ def _unidiff_output(expected, actual):
 """
 
 
+def global_checks():
+    if not os.getenv('PANIC_PROJECT'):
+        raise Exception('falta setear PANIC_PROJECT')

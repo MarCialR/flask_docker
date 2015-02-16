@@ -3,8 +3,9 @@ from flask import request
 from helpers.tests import cmd_output_as_line, stdout_stderr, cmd_output_as_lines
 from flask.ext.restful import Resource
 from panic import app
-resources = []
 
+
+resources = []
 
 class OK(Resource):
     url = '/ok'

@@ -43,7 +43,7 @@ appcfg_py = "appcfg.py "
 #print os.path.realpath(os.path.curdir)
 #print os.path.realpath(__file__)
 
-# TODO icomrporar el path apropiado a nose tests
+# TODO incorporar el path apropiado a nose tests
 
 #@unittest.skip("OK")
 class GoAppTestCase(TC):
