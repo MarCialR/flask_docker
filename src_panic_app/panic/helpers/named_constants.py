@@ -1,3 +1,4 @@
+# from https://github.com/hmeine/named_constants
 import inspect
 
 class _ConstantsMeta(type):
