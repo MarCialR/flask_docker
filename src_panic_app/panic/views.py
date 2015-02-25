@@ -11,6 +11,19 @@ print "\n\n1111111"
 print "========"
 pprint(app.__dict__)
 
+
+
+@app.route('/gcloud.html')
+def get_gcloud_example():
+    complete_path = os.path.join(STATIC_DIR, 'gcloud.html')
+    content = get_static(complete_path)
+    return Response(content, mimetype="text/html")
+
+
+
+
+
+
 from panic import ALL_RESOURCES as resources
 @app.route('/index.html', methods=['GET'])
 def index():

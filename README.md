@@ -10,6 +10,7 @@ sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/r
 from cloud9
 sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/cloud9/workspace1/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
 
+
 Inspect container
 -----------------
 sudo docker inspect panic
@@ -56,3 +57,7 @@ http://haifux.org/lectures/294/modern-web-applications.pdf
 to think
 ======== 
 http://code.activestate.com/recipes/159571-importing-any-file-without-modifying-syspath/
+
+GitHub
+======
+https://github.com/MarCialR/flask_docker.git
