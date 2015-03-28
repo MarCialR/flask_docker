@@ -10,6 +10,7 @@ def get_dir_in_app(_dir):  # pragma: no cover
 STATIC_DIR = get_dir_in_app("static")
 TEMPLATES_DIR = get_dir_in_app("templates")
 TESTS_DIR = get_dir_in_app("tests")
+NOSE_TESTS_DIR = get_dir_in_app("tests/noses")
 
 del _thisfiledir
 

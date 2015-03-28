@@ -1,15 +1,11 @@
+import os
 from flask import request
 from helpers.tests import cmd_output_as_line, stdout_stderr, cmd_output_as_lines
 from flask.ext.restful import Resource
+from panic import app
+
 
 resources = []
-
-
-"""
-SESTE
-
-/repos/flask_docker/src_panic_app/app/tests/python/nosetests/test_appengine
-"""
 
 class OK(Resource):
     url = '/ok'
@@ -17,14 +13,26 @@ class OK(Resource):
     name = 'OK'
     menu = 'appengine'
     def get(self):
-        import os
-        os.chdir('/root/panic_app/panic/tests/noses/test_appengine/')
+        print app.config
+        os.chdir(app.config['TESTS_DIR']  + '/noses/test_appengine/')
         output = cmd_output_as_lines("nosetests")
         return {'result': 'OK', 'info':"</br>".join(output)}        
 
 
 resources.append(OK)
 
+class Trivial(Resource):
+    url = '/Trivial'
+    tipe = 'Trivial'
+    name = 'Trivial'
+    menu = 'appengine'
+    def get(self):
+        os.chdir(app.config['TESTS_DIR']  + '/noses/trivial_tests')
+        output = cmd_output_as_lines("nosetests")
+        return {'result': 'OK', 'info':"</br>".join(output)}        
+
+
+resources.append(Trivial)
 
 class RunCommand(Resource):
     url = '/runcommand'
@@ -37,5 +45,3 @@ class RunCommand(Resource):
         return {'result': 'OK', 'info': output}
 
 resources.append(RunCommand)
-
-

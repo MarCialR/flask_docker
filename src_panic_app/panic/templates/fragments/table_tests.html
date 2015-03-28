@@ -1,0 +1,24 @@
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Test Name</th>
+                                            <th>Info</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+{% for test in tests %}
+
+                                        <tr>
+                                            <td class="col-md-1"><button type="button" class="btn btn-primary" data="{{ test.url }}">Run</button></td>
+                                            <td class="col-md-3"><span class="toggle_info">{{ test.id }}</span><span class="toggle_info" style="display:none">{{ test.url }} </span></td>
+                                            <td></td>
+                                        </tr>
+{% endfor %}                                        
+   
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->

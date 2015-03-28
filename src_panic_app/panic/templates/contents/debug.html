@@ -1,7 +1,3 @@
-{% extends "base.html" %}
-{% block content %}
-
-        <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">{{ title }}</h1>
@@ -25,13 +21,15 @@
            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-info">
-                        <div class="panel-heading">
+                        <div class="panel-heading" id="walker-toggler">
                             menu Walker
                         </div>
-                        <div class="panel-body">
-                            <p>{{menu.walker.walk()|safe}}</p>
+                        <div class="panel-body walker-toggle-me">
+                        <button class="btn btn-default" id="toggle_info">Info</button>
+                            <p>{{collection.html_info()|safe}}</p>
+                            {% include 'fragments/table_tests.html' %}
                         </div>
-                        <div class="panel-footer">
+                        <div class="panel-footer walker-toggle-me">
                             Panel Footer
                         </div>
                     </div>
@@ -39,5 +37,9 @@
                 <!-- /.col-lg-12 -->
             </div>            
             <!-- /.row -->
-        </div>
-{% endblock %}
+            <script type="text/javascript">
+                $("#walker-toggler").click(function(){
+                    $(".walker-toggle-me").toggle();
+                    attach_toggle_info_handler();
+                });
+            </script>

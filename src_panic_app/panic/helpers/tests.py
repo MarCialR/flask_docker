@@ -1,3 +1,4 @@
+import os
 import re
 import subprocess
 from pexpect import spawn, ExceptionPexpect
@@ -60,10 +61,6 @@ def _unidiff_output(expected, actual):
 """
 
 
-def get_tests_for_page(resources, page):
-    tests = []
-    for res in resources:
-        if res.menu == page or page=='tests':
-            tests.append({'id': res.name, 'url': res.url, 'name': res.name})    
-    return tests
-
+def global_checks():
+    if not os.getenv('PANIC_PROJECT'):
+        raise Exception('falta setear PANIC_PROJECT')

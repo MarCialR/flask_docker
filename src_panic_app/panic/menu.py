@@ -1,25 +1,4 @@
-import os
-from helpers.site import TESTS_DIR
 from helpers.html import to_br
-
-class Walker(object):
-
-	def walk(self):
-		info = ""
-		info += "This is using getsize to see how much every file consumes\n"
-		info += "---------------\n"
-		from os.path import join, getsize
-		for root, dirs, files in os.walk(TESTS_DIR):
-		    info += "\n" + root 
-		    info += " consumes " + str(sum([getsize(join(root, name)) for name in files]))
-		    info += " bytes in " + str(len(files)) +  " non-directory files"
-
-		for root, dirs, files in os.walk(TESTS_DIR):
-		    info += "\n" + root + " consumes "
-		    info += str(sum([getsize(join(root, name)) for name in files]))
-		    info += " bytes in " + str(len(files)) +  " non-directory files"
-
-		return to_br(info)
 
 class MenuItem(object):
 	def __init__(self, dicc):
@@ -33,21 +12,24 @@ class MenuItem(object):
 
 
 class Menu(object):
-	walker = Walker()
 	
 	def __init__(self, items):
 		self.items = items
 
-	def populate(self, items = None):
+
+	def set_items(self, items=None):
+		if items and len(items)>0:
+			self.items = items		
+
+	def get_html(self):
 		html = ""
-		if not items:
-			items = self.items
-		for item in items:
+		for item in self.items:
 			html += """
                         <li>
-                            <a href="/%s"><i class="fa fa-table fa-fw"></i> %s</a>
+                            <a href="javascript:load_contents('%s')"><i class="fa fa-cloud fa-fw"></i> %s</a>
                         </li>
 """ % (item.url, item.text)
+
 		return html
 
 	def get_text_by_url(self, url):
@@ -55,50 +37,24 @@ class Menu(object):
 			if i.url == url:
 				return i.text
 		return 'Menu Item not found for url: ' + url
-
-
-
-class Menu2(Menu):
-	
-	jsons = []
-	noses = []
-	shells = []
-
-	def __init__(self, items):
-		super(Menu2, self).__init__(items)
-		self.search()
-
-	def search(self):
-		self.search_for_json()
-		self.search_for_noses()
-		self.search_for_shell()
 			
-	
-	def search_for_json(self):
-		self.jsons.append(MenuItem({'text':'Json Tests',
-			'url':'tests/json_tests'}))
-	
-	def search_for_noses(self):
-		self.noses.append(MenuItem({'text':'Nose Tests',
-			'url':'tests/nose_tests'}))
-	
-	def search_for_shell(self):
-		self.shells.append(MenuItem({'text':'Shell Tests',
-			'url':'tests/shell_tests'}))
-	
-	def items_extended(self):
-		return self.jsons + self.noses + self.shells + self.items
-		
-	def populate(self):
-		return super(Menu2, self).populate(self.items_extended())
-		
+	def extend_items(self):
+		extended_items = [  MenuItem({'text':'Json Tests',
+								'url':'tests/json_tests'}),
+							MenuItem({'text':'Nose Tests',
+								'url':'tests/nose_tests'}),
+							MenuItem({'text':'Shell Tests',
+								'url':'tests/shell_tests'}) ]
+		self.set_items(self.items + extended_items)
 
 
 menu = Menu([ MenuItem({'text':'App Engine',
 			'url':'tests/appengine'}),
 		MenuItem({'text':'Compute Engine',
 			'url':'tests/computeengine'}),
-		MenuItem({'text':'Debugging tools',
+		MenuItem({'text':'Debug',
 			'url':'debug'}) ])
+
+menu.extend_items()
 
 
