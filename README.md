@@ -11,7 +11,7 @@ from cloud9
 sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v $PWD/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
 
 
-sudo docker run -i -t -p 10.240.77.90:8899:8080 --name panic -v $PWD/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
+sudo docker run -i -t -p 10.240.132.38:8899:8080 --name panic -v $PWD/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
 
 
 Inspect container
@@ -64,3 +64,9 @@ http://code.activestate.com/recipes/159571-importing-any-file-without-modifying-
 GitHub
 ======
 https://github.com/MarCialR/flask_docker.git
+
+
+
+sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
+docker run --name "kivy" --hostname="kivy" --rm -i -t -v  kartoza/kivy
+
