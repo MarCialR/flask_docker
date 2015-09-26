@@ -74,6 +74,6 @@ EXPOSE 8080
 RUN mkdir /.ssh
 ENV PATH /google_appengine:/google-cloud-sdk/bin:$PATH
 ENV HOME /
+# what is this f4?
 VOLUME ["/.config"]
-#CMD ["/bin/bash"]
 CMD ["/root/panic_app/start.sh"]
