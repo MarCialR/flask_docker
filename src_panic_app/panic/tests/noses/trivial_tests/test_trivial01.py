@@ -14,5 +14,5 @@ class TrivialTestCase(TC):
     def test_03_faildiquesi(self):
         assert "diqueSI" == "diquesi"
 
-    def test_04_diqueNO(self):
+    def test_04_faildiqueNO(self):
         assert "diqueNO" == "diquesi"    

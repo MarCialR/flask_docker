@@ -28,23 +28,26 @@ from panic import ALL_RESOURCES as resources
 def index():
     return render_template( 'index.html',
                        menu = menu)
-                       
+
+from collection import collection
+
 @app.route('/', methods=['GET'])
 @app.route('/tests/<page>', methods=['GET'])
 def tests(page='appengine'):
     return render_template( 'tests.html',
                        title = menu.get_text_by_url('tests/' + page),
-                       tests = get_tests_for_page(resources, page),
+                       tests = collection.get_tests_for_page( page),
                        menu = menu)
 #creo que esto se borra
 from menu import menu
 from helpers.site import get_static, STATIC_DIR
 #creo que esto se borra FIN
 
-
+"""
 @app.route('/', methods=['GET'])
 def index():
     return render_template( 'index.html', menu = menu)
+"""
 
 @app.route('/<page>.html', methods=['GET'])
 def old_html(page='index'):

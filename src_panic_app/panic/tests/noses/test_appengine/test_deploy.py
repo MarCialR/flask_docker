@@ -38,7 +38,7 @@ apps_path = os.path.join(os.path.dirname(os.path.abspath(os.path.abspath('test_d
 
 #apps_path = os.path.join(os.path.dirname(os.path.abspath('test_deploy.py'),'../apps'))
 #"/root/panic_app/panic/tests/noses/test_appengine/apps/"
-appcfg_py = "appcfg.py "
+appcfg_py = "gcloud preview app "
 #print "MROU"
 #print os.path.realpath(os.path.curdir)
 #print os.path.realpath(__file__)
@@ -74,7 +74,7 @@ class GoAppTestCase(TC):
 
 
         os.chdir(apps_path)
-        stdout = cmd_output_as_line(appcfg_py + "update go/")
+        stdout = cmd_output_as_line(appcfg_py + "deploy go/")
         must_contain = "PM Completed update of app: panic-tests, version: go"
         write_to_logg("\n\ntest_upload_go_app\n" + stdout)
         assert re.search(must_contain, stdout)
