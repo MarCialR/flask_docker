@@ -74,7 +74,7 @@ class GoAppTestCase(TC):
 
 
         os.chdir(apps_path)
-        stdout = cmd_output_as_line(appcfg_py + "deploy go/")
+        stdout = cmd_output_as_line(appcfg_py + " deploy --version go -q go/app.yaml")
         must_contain = "PM Completed update of app: panic-tests, version: go"
         write_to_logg("\n\ntest_upload_go_app\n" + stdout)
         assert re.search(must_contain, stdout)
@@ -95,7 +95,7 @@ class GoAppTestCase(TC):
         Success.
         """
         os.chdir(apps_path)
-        stdout = cmd_output_as_line(appcfg_py + "delete_version -A panic-tests -V go")
+        stdout = cmd_output_as_line(appcfg_py + "modules delete default --version=go")
         must_contain_1 = 'Deleting version go...\r\n'
         must_contain_2 = 'Success.\r\n'
         assert re.search(must_contain_1, stdout)

@@ -1,5 +1,4 @@
 application: panic-tests
-version: go
 runtime: go
 api_version: go1
 
