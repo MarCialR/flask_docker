@@ -1,17 +1,11 @@
 panic
 =====
 
-sudo docker build -t marcialr/panic:4_panic .
+docker build -t marcialr/panic:4_panic .
 
-sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
+docker run -it -p 8080:8080  --name panic -v $(pwd)/src_panic_app:/root/panic_app/ panic /root/panic_app/start.sh
 
-sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v /home/mroman/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
-
-from cloud9
-sudo docker run -i -t -p 10.240.166.172:8899:8080 --name panic -v $PWD/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
-
-
-sudo docker run -i -t -p 10.240.132.38:8899:8080 --name panic -v $PWD/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
+If from an instance: -p <EXTERNAL_IP>:8899:8080 
 
 
 Inspect container
@@ -28,9 +22,6 @@ uwsgi
 nose
 
 
-add cloud sdk
-https://cloud.google.com/sdk/https://www.youtube.com/watch?v=Rs38x-13l9s
-https://registry.hub.docker.com/u/google/cloud-sdk/
 
 theme
 =====
@@ -65,8 +56,4 @@ GitHub
 ======
 https://github.com/MarCialR/flask_docker.git
 
-
-
-sudo docker run -i -t -p 8080:8080  --name panic -v /home/marcial/repos/flask_docker/src_panic_app:/root/panic_app/ marcialr/panic:4_panic /root/panic_app/start.sh
-docker run --name "kivy" --hostname="kivy" --rm -i -t -v  kartoza/kivy
 
