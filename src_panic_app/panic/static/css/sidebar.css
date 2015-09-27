@@ -1,0 +1,28 @@
+/*!
+ * After idea taken from:
+ * http://ironsummitmedia.github.io/startbootstrap-simple-sidebar/#
+ */
+
+#wrapper .sidebar {
+        width: 250px;
+    }
+#wrapper.toggled .sidebar {
+        width: 0px;
+}
+
+#wrapper.toggled #side-menu li {
+        display: none;
+}
+#wrapper #side-menu li {
+        display: block;
+}
+
+@media(min-width:768px) {
+#wrapper #page-wrapper {
+        margin: 0 0 0 250px;
+    }
+#wrapper.toggled #page-wrapper {
+        margin: 0 0 0 0px;
+}
+
+}

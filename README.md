@@ -1,7 +1,7 @@
 panic
 =====
 
-docker build -t marcialr/panic:4_panic .
+docker build -t panic .
 
 docker run -it -p 8080:8080  --name panic -v $(pwd)/src_panic_app:/root/panic_app/ panic /root/panic_app/start.sh
 

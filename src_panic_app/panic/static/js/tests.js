@@ -79,23 +79,4 @@ $(function(){
 	alert('yeah');//$.post( "/runcommand", $( "#runcommand_form" ).serialize() );	
 })*/
 
-var borrar;
 
-function load_contents(url){
-	//alert('will call '+ '/contents/'+url);
-	$.ajax({
-	  url: '/contents/'+url
-	}).done(function(data) {
-		console.log(data);
-		borrar = data;
-		if (data.result == 'OK'){
-			$("#page-wrapper").html(data.contents);
-			attach_submit_handler();
-			attach_test_launch_handler();
-		} else {
-			alert('Error loading contents');
-		}
-
-
-	});
-}
