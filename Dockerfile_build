@@ -67,12 +67,13 @@ RUN pip install -r /root/panic_app/requirements.txt
 
 
 
-WORKDIR /root
-
-
-ENV PATH /google_appengine:/google-cloud-sdk/bin:$PATH
-
-ADD /src_panic_app/ panic_app
+WORKDIR /root/panic_app
 
 EXPOSE 8080
-CMD ["/root/panic_app/start_creds.sh"]
+
+RUN mkdir /.ssh
+ENV PATH /google_appengine:/google-cloud-sdk/bin:$PATH
+ENV HOME /
+# what is this f4?
+VOLUME ["/.config"]
+CMD ["/root/panic_app/start.sh"]
