@@ -3,7 +3,7 @@ import os
 class Config(object):
     os.environ['PANIC_PROJECT'] = 'panic-tests'
     APP_TITLE = 'Panic Tests'
-    TESTS_DIR = '/root/panic_app/panic/tests'
+    TESTS_DIR = '/panic_app/panic/tests'
     DEBUG = False
 
 class Production(Config):

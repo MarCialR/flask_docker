@@ -37,7 +37,7 @@ def write_to_logg(que):
 apps_path = os.path.join(os.path.dirname(os.path.abspath(os.path.abspath('test_deploy.py'))),'test_appengine/apps')
 
 #apps_path = os.path.join(os.path.dirname(os.path.abspath('test_deploy.py'),'../apps'))
-#"/root/panic_app/panic/tests/noses/test_appengine/apps/"
+#"/panic_app/panic/tests/noses/test_appengine/apps/"
 appcfg_py = "gcloud preview app "
 #print "MROU"
 #print os.path.realpath(os.path.curdir)

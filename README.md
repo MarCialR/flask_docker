@@ -3,7 +3,9 @@ panic
 
 docker build -t panic .
 
-docker run -it -p 8080:8080  --name panic -v $(pwd)/src_panic_app:/root/panic_app/ panic /root/panic_app/start.sh
+docker run --env-file=ENVIRONMENT.env  panic3
+
+docker run --env-file=ENVIRONMENT.env -v $(pwd)/src_panic_app:/panic_app/ --name panic panic
 
 If from an instance: -p <EXTERNAL_IP>:8899:8080 
 

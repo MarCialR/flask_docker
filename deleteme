@@ -1,3 +1,4 @@
+
 this is your first deployment, this may take a while...done.
 
 Provisioning remote build service.
@@ -7,48 +8,4 @@ allow-gae-builder default 0.0.0.0/0  tcp:2376          gae-builder
 WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: https://developers.google.com/compute/docs/disks/persistent-disks#pdperformance.
 
 
-
-
-from pprint import pprint
-APP_ENGINE_TESTS_DIR = "/home/marcial/repos/flask_docker/src_panic_app/panic/tests/noses/test_appengine"
-from nose.config import Config
-conf = Config()
-from nose.loader import TestLoader
-loader = TestLoader()
-from nose.plugins.collect import CollectOnly, TestSuiteFactory, TestSuite
-collect = CollectOnly()
-collect.conf = conf
-collect.prepareTestLoader(loader)
-tests = loader.loadTestsFromDir(APP_ENGINE_TESTS_DIR)
-suite = TestSuite()
-suite.addTests(tests)
-
-
-from pprint import pprint
-NOSETESTS_DIR = "/home/marcial/repos/flask_docker/src_panic_app/panic/tests/noses"
-from nose.config import Config
-conf = Config()
-from nose.loader import TestLoader
-loader = TestLoader()
-from nose.plugins.collect import CollectOnly, TestSuiteFactory, TestSuite
-collect = CollectOnly()
-collect.conf = conf
-collect.prepareTestLoader(loader)
-tests = loader.loadTestsFromDir(NOSETESTS_DIR)
-suite = TestSuite()
-suite.addTests(tests)
-
-
-from pprint import pprint
-NOSETESTS_DIR = "/home/marcial/repos/flask_docker/src_panic_app/panic/tests/noses"
-from nose.config import Config
-conf = Config()
-from nose.loader import TestLoader
-loader = TestLoader()
-from nose.plugins.collect import CollectOnly, TestSuiteFactory, TestSuite
-collect = CollectOnly()
-collect.conf = conf
-collect.prepareTestLoader(loader)
-tests = loader.loadTestsFromDir(NOSETESTS_DIR)
-suite = TestSuite()
-suite.addTests(tests)
+------------------------------------------------

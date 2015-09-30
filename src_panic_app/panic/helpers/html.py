@@ -1,2 +1,3 @@
 def to_br(html):
-    return html.replace('\n','<br>')
+	"""Converts newlines to html br"""
+	return html.replace('\n','<br>')
