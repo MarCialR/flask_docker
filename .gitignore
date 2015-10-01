@@ -1,3 +1,4 @@
+credentials/key.p12
 *.pyc
 *.save
 *~

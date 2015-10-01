@@ -1,5 +1,6 @@
 from panic import app, ALL_RESOURCES
 from flask.ext import restful
+import os
 
 api = restful.Api(app)
 app.api = api
