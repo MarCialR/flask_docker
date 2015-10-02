@@ -2,6 +2,7 @@ import os
 
 _thisfiledir = os.path.abspath(os.path.dirname(__file__))
 
+
 def get_dir_in_app(_dir):  # pragma: no cover
     """returns the absolute path of the main app folders"""
     return os.path.normpath(os.path.join(os.path.join(_thisfiledir, '..' ), _dir))
@@ -14,6 +15,7 @@ NOSE_TESTS_DIR = get_dir_in_app("tests/noses")
 
 del _thisfiledir
 
+
 def get_static(filename):
     """taken from stackoverflow"""
     try:
@@ -21,6 +23,7 @@ def get_static(filename):
         return open(src).read()
     except IOError as exc:
         return str(exc)
+
 
 def app_info(app):
     from pprint import pprint
