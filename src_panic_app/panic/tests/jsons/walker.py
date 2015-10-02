@@ -5,6 +5,7 @@ from pprint import pprint
 
 resources = []
 
+
 def get(self):
 
     """stdout, stderr = stdout_stderr(self.command)
@@ -28,7 +29,6 @@ def get(self):
     output = [l.replace('\r\n','<br>').replace('\n','<br>') for l in cmd_output_as_lines(self.command)]
     return {'result': 'OK' ,
             'info': "".join(output)}
-
 
 
 def build_testclass(test_dict):
