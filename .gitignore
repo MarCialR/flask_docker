@@ -1,5 +1,6 @@
-credentials/key.p12
+src_panic_app/credentials/key.p12
 *.pyc
+/src_panic_app/ENVIRONMENT_DEV.env
 *.save
 *~
 *.err

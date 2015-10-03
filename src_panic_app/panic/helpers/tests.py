@@ -5,6 +5,7 @@ from pexpect import spawn, ExceptionPexpect
 
 foo_output = ".... OK"
 
+
 def stdout_stderr(command):
     """
     opens subprocess and returns stdout, stderr for given command
@@ -38,7 +39,6 @@ def cmd_output_as_line(command):
     return output
 
 
-
 def write_to_logg(what_to_log):
 
     logg_file = "/home/mroman/repos/notebooks/notebooks/google/1_Panic_tests/tests/logg"
@@ -59,8 +59,3 @@ def _unidiff_output(expected, actual):
 
     return ''.join(diff)
 """
-
-
-def global_checks():
-    if not os.getenv('PANIC_PROJECT'):
-        raise Exception('falta setear PANIC_PROJECT')

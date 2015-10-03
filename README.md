@@ -3,9 +3,9 @@ panic
 
 docker build -t panic .
 
-docker run --env-file=ENVIRONMENT.env  panic
+docker run --env-file=src_panic_app/ENVIRONMENT.env  panic
 
-docker run --rm=true --env-file=ENVIRONMENT.env -v $(pwd)/src_panic_app:/panic_app/ --name panic -p 0.0.0.0:8080:8080 panic
+docker run --rm=true --env-file=src_panic_app/ENVIRONMENT_DEV.env -v $(pwd)/src_panic_app:/panic_app/ --name panic -p 0.0.0.0:8080:8080 panic
 
 If from an instance: -p <EXTERNAL_IP>:8899:8080 
 

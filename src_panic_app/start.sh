@@ -12,9 +12,7 @@ source /root/.bashrc
 # BROWSER FLOW:
 #gcloud auth login
 
-# SERVICE ACCOUNT .p12 key
-#https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account
-
+# SERVICE ACCOUNT .p12 key : more on this at https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account
 gcloud auth activate-service-account $SERVICE_ACCOUNT_EMAIL --key-file /credentials/key.p12 --password-file /credentials/password
 
 gcloud config set project panic-tests

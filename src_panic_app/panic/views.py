@@ -3,24 +3,17 @@ from flask import Response, render_template, jsonify
 
 from panic import app
 from helpers.tests import cmd_output_as_lines
-from helpers.site import get_static, STATIC_DIR
+from helpers.site import get_static
 from menu import menu
 from collection import collection
 
 
-# aqui empezo el conflicto
-from pprint import pprint
-
-print "\n\n1111111"
-print "========"
-pprint(app.__dict__)
-
-
 @app.route('/gcloud.html')
 def get_gcloud_example():
-    complete_path = os.path.join(STATIC_DIR, 'gcloud.html')
-    content = get_static(complete_path)
-    return Response(content, mimetype="text/html")
+
+    content = get_static(app, 'gcloud.html')
+    return Response(content,
+                    mimetype="text/html")
 
 
 @app.route('/index.html', methods=['GET'])
@@ -47,7 +40,8 @@ def index():
 
 @app.route('/<page>.html', methods=['GET'])
 def old_html(page='index'):
-    return render_template('sbtadmin/' + page + '.html', menu=menu)
+    return render_template('sbtadmin/' + page + '.html',
+                           menu=menu)
 
 
 @app.route('/<path:path>')
@@ -57,11 +51,11 @@ def get_resource(path):
         # ".html": "text/html",
         ".js": "application/javascript",
     }
-    complete_path = os.path.join(STATIC_DIR, path)
     ext = os.path.splitext(path)[1]
     mimetype = mimetypes.get(ext, "text/html")
-    content = get_static(complete_path)
-    return Response(content, mimetype=mimetype)
+    content = get_static(app, path)
+    return Response(content,
+                    mimetype=mimetype)
 
 
 @app.route('/noses/<what>', methods=['GET'])

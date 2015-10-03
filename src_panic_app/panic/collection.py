@@ -1,7 +1,6 @@
 import os
 import nose
-from panic import ALL_RESOURCES as resources
-from helpers.site import TESTS_DIR, NOSE_TESTS_DIR
+from panic import app, ALL_RESOURCES as resources
 from helpers.html import to_br
 
 
@@ -12,8 +11,8 @@ class Walker(object):
         info += "This is using getsize to see how much every file consumes\n"
         info += "---------------\n"
         from os.path import join, getsize
-        zero = len(TESTS_DIR)
-        for root, dirs, files in os.walk(TESTS_DIR):
+        zero = len(app.config['TESTS_DIR'])
+        for root, dirs, files in os.walk(app.config['TESTS_DIR']):
             info += "\n" + root[zero:]
             info += " consumes " + str(sum([getsize(join(root, name)) for name in files]))
             info += " bytes in " + str(len(files)) + " files"
@@ -38,12 +37,13 @@ class NoseWalker(Walker):
         dot = id.rfind('.')
         # old
         # return {'id': id[dot+1:], 'url': '/noses/' + id, 'name': id[dot:]}
-        new_id = filepath[len(NOSE_TESTS_DIR) + 1:-3].replace('/', '.') + ":" + testinfile
+        new_id = filepath[len(self.dir) + 1:-3].replace('/', '.') + ":" + testinfile
         return {'id': id[dot + 1:], 'url': '/noses/' + new_id, 'name': id[dot:]}
 
     def __init__(self):
-        print "NOSE_TESTS_DIR: %s" % NOSE_TESTS_DIR
-        self.tests = self._collect_tests_from_dir(NOSE_TESTS_DIR)
+        self.dir = app.config['NOSE_TESTS_DIR']
+        print "NOSE_TESTS_DIR: %s" % self.dir
+        self.tests = self._collect_tests_from_dir()
         self.dict_tests = {t.id(): t for t in self.tests}
 
     def get_jsons(self):
@@ -56,7 +56,7 @@ class NoseWalker(Walker):
             for t in suite._tests:
                 self.traverse_recursive(t, found)
 
-    def _collect_tests_from_dir(self, dir_to_collect):
+    def _collect_tests_from_dir(self):
         """ Uses nose's collect plugin"""
         # from pprint import pprint
         # APP_ENGINE_TESTS_DIR = "/home/marcial/repos/flask_docker/src_panic_app/panic/tests/noses/test_appengine"
@@ -69,7 +69,7 @@ class NoseWalker(Walker):
         collect.conf = conf
         collect.prepareTestLoader(loader)
 
-        tests = loader.loadTestsFromDir(dir_to_collect)
+        tests = loader.loadTestsFromDir(self.dir)
 
         suite = TestSuite()
         suite.addTests(tests)

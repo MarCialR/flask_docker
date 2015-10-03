@@ -9,3 +9,9 @@ WARNING: You have selected a disk size of under [200GB]. This may result in poor
 
 
 ------------------------------------------------
+
+"""from pprint import pprint
+print "\n\n1111111"
+print "========"
+pprint(app.__dict__)
+"""
