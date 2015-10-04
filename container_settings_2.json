@@ -1,0 +1,14 @@
+{
+  "_comment": "FOR DETAILED FORMAT LOOK AT https://docs.docker.com/reference/api/docker_remote_api_v1.16/#create-a-container",
+  "AttachStdin": true,
+  "OpenStdin": true,
+  "HostConfig": {
+    "PortBindings":{ "8080/tcp": [{ "HostIp": "0.0.0.0", "HostPort": "18080" }] }
+  }
+}
+
+
+"DisableNetwork", "StdinOnce", "name", "Env", "AttachStdout", "Hostname",
+"MemorySwap", "Tty", "Cmd", "CpuShares", "_comment", "Memory", "AttachStdin",
+"AttachStderr", "HostConfig" [truncated]])
+ at [Source: /media/USB64GB/workspaces/pycharm/flask_docker/container_settings.json; line: 11, column: 16] (through reference chain: com.intellij.docker.agent.CreateContainerCmdConfig["Mounts"])

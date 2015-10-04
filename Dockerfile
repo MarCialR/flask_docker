@@ -65,7 +65,7 @@ ENV PATH /google_appengine:$PATH
 # Install Application requirements
 # --------------------------------
 # Copy the application folder inside the container
-COPY /src_panic_app/requirements.txt /requirements.txt
+COPY src_panic_app/requirements.txt /requirements.txt
 # Get pip to download and install requirements:
 RUN pip install -r /requirements.txt
 RUN rm requirements.txt
@@ -76,8 +76,8 @@ RUN rm requirements.txt
 # ----------------------
 
 WORKDIR /
-COPY /src_panic_app/ panic_app
-COPY /credentials/ credentials
+COPY src_panic_app/ panic_app
+COPY credentials/ credentials
 
 EXPOSE 8080
 CMD ["/panic_app/start.sh"]
